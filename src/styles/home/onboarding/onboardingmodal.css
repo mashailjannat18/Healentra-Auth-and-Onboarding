@@ -1,0 +1,336 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    font-family: "Raleway", sans-serif;
+}
+
+.onboarding-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 50;
+}
+
+.onboarding-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 700px;
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 0 30px;
+    position: relative;
+}
+
+.onboarding-head {
+    position: sticky;
+    top: 0;
+    padding-top: 30px;
+    background-color: white;
+}
+
+.onboarding-modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+    background-color: white;
+}
+
+.onboarding-modal-header h2 {
+    margin: 0 0 8px 0;
+    color: #333;
+    font-size: 24px;
+}
+
+.onboarding-modal-header p {
+    margin: 0;
+    color: #666;
+    font-size: 14px;
+}
+
+.onboarding-steps-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    padding-bottom: 10px
+}
+
+.stepItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.onboarding-step-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2CA8E0;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-bottom: 8px;
+    transition: all 0.3s ease;
+}
+
+.onboarding-step-circle.completed {
+    background-color: #8DC645;
+}
+
+.onboarding-step-circle.active {
+    background-color: #2CA8E0;
+    transform: scale(1.1);
+}
+
+.onboarding-step-name {
+  font-size: 12px;
+    color: #666;
+    transition: all 0.3s ease;
+}
+
+.onboarding-step-name.active {
+    font-weight: bold;
+    color: #333;
+}
+
+.onboarding-step-connector {
+    flex: 1;
+    height: 2px;
+    background-color: #e0e0e0;
+    margin: -20px 10px 0 10px;
+    min-width: 60px;
+}
+
+.onboarding-form-content {
+    min-height: 400px;
+}
+
+.stepContent {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.onboarding-form-group {
+    margin-bottom: 20px;
+}
+
+.onboarding-form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #333;
+}
+
+.onboarding-form-group input,
+.onboarding-form-group textarea {
+    width: 96%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.startDateInput, .endDateInput {
+    width: 80%;
+}
+
+.onboarding-form-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.onboarding-form-group input:focus,
+.onboarding-form-group select:focus,
+.onboarding-form-group textarea:focus {
+    outline: none;
+    border-color: #2CA8E0;
+}
+
+.onboarding-form-group.half {
+    width: calc(50% - 10px);
+}
+
+.onboarding-row {
+    display: flex;
+    gap: 20px;
+}
+
+.specializationTags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.onboarding-tag {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.onboarding-tag-remove {
+    background: none;
+    border: none;
+    color: #1976d2;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 0;
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tagRemove {
+    border: none;
+    background-color: rgb(215, 215, 215);
+    color: white;
+    font-weight: bold;
+    border-radius: 30px;
+    margin-bottom: 2px;
+    padding-bottom: 2px;
+    transition: background-color 0.3s;
+}
+
+.tagRemove:hover {
+    background-color: rgb(159, 159, 159);
+}
+
+.sectionHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.sectionHeader h3 {
+    margin: 0;
+    color: #333;
+}
+
+.addButton {
+    background-color: #2CA8E0;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.addButton:hover {
+    background-color: #1e87b8;
+}
+
+.certificateItem,
+.experienceItem {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.itemHeader h4 {
+    margin: 0;
+    color: #333;
+}
+
+.deleteButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #dc3545;
+}
+
+.onboarding-form-group input[type="file"] {
+    padding: 8px;
+}
+
+.onboarding-error-message {
+    color: #dc3545;
+    font-size: 12px;
+    margin: 5px 0 10px 0;
+    display: block;
+}
+
+.onboarding-form-group input.error,
+.onboarding-form-group select.error,
+.onboarding-form-group textarea.error {
+    border-color: #dc3545;
+}
+
+.onboarding-modal-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+    position: sticky;
+    background-color: white;
+    padding-bottom: 30px; 
+    bottom: 0;
+}
+
+.onboarding-button-primary {
+    background-color: #2CA8E0;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.onboarding-button-primary:hover {
+    background-color: #1e87b8;
+}
+
+.onboarding-button-secondary {
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.onboarding-button-secondary:hover {
+    background-color: #545b62;
+}
+
+.onboarding-step-wrapper {
+  display: flex;
+  align-items: center;
+}
