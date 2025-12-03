@@ -8,7 +8,7 @@ export default function Home() {
     const { user, loading, error } = useUser();
     const token = useSelector((state) => state.login.token);
 
-    const needsOnboarding = user && (!user.data.specialities || user.data.specialities.length === 0);
+    const needsOnboarding = user && user.data.specialities.length === 0;
 
     const handleOnboardingComplete = () => {
       setShowOnboarding(false);
