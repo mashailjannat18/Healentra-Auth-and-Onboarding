@@ -33,6 +33,36 @@ export default function SignUp() {
     };
 
     const renderFieldGroup = (group) => {
+        // Handle password field separately - it should be full width
+        if (group.includes('password')) {
+            return (
+                <div className="signup-password-container" key="password">
+                    <label htmlFor="password">Password:</label>
+                    <div className="signup-password-wrapper">
+                        <input
+                            type={showPassword ? "text" : "password"}
+                            id="password"
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            className={`signup-input signup-full-width ${errors.password ? 'signup-error' : ''}`}
+                        />
+                        <button
+                            type="button"
+                            className="signup-password-toggle"
+                            onClick={togglePasswordVisibility}
+                            tabIndex="-1"
+                        >
+                            {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                        </button>
+                    </div>
+                    {errors.password && <span className="signup-error-message">{errors.password}</span>}
+                </div>
+            );
+        }
+        
         return (
             <div className="signup-row" key={group.join('-')}>
                 {group.map((fieldName) => {
@@ -81,35 +111,6 @@ export default function SignUp() {
                                     <option value="female">Female</option>
                                     <option value="prefer-not">Prefer not to say</option>
                                 </select>
-                                {errors[fieldName] && <span className="signup-error-message">{errors[fieldName]}</span>}
-                            </div>
-                        );
-                    }
-                    
-                    if (fieldName === 'password') {
-                        return (
-                            <div className="signup-column" key={fieldName}>
-                                <label htmlFor={fieldName}>Password:</label>
-                                <div className="signup-password-wrapper">
-                                    <input
-                                        type={showPassword ? "text" : "password"}
-                                        id={fieldName}
-                                        name={fieldName}
-                                        placeholder="Password"
-                                        value={formData[fieldName]}
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        className={`signup-input signup-full-width ${errors[fieldName] ? 'signup-error' : ''}`}
-                                    />
-                                    <button
-                                        type="button"
-                                        className="signup-password-toggle"
-                                        onClick={togglePasswordVisibility}
-                                        tabIndex="-1"
-                                    >
-                                        {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                                    </button>
-                                </div>
                                 {errors[fieldName] && <span className="signup-error-message">{errors[fieldName]}</span>}
                             </div>
                         );
